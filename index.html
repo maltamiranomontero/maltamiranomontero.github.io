@@ -34,17 +34,17 @@
 
     <!-- Styles -->
     
-    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+    <link rel="shortcut icon" href="/assets/img/icon.png">
     
-    <link rel="stylesheet" href="/personal-website-2/assets/css/main.css">
-    <link rel="canonical" href="https://maltamiranomontero.github.io/personal-website-2/">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://maltamiranomontero.github.io/">
 
     <!-- Dark Mode -->
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/nord.css" media="none" id="highlight_theme_dark">
 
-    <script src="/personal-website-2/assets/js/theme.js"></script>
-    <script src="/personal-website-2/assets/js/dark_mode.js"></script>
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
     
 
   </head>
@@ -72,20 +72,16 @@
 
               <!-- About -->
               <li class="nav-item active">
-                <a class="nav-link" href="/personal-website-2/">about<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">about<span class="sr-only">(current)</span></a>
               </li>
               
-              <!-- Blog -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/personal-website-2/blog/">blog</a>
-              </li>
 
               <!-- Other pages -->
               <li class="nav-item ">
-                <a class="nav-link" href="/personal-website-2/publications/">publications</a>
+                <a class="nav-link" href="/publications/">publications</a>
               </li>
               <li class="nav-item ">
-                <a class="nav-link" href="/personal-website-2/cv/">cv</a>
+                <a class="nav-link" href="/cv/">cv</a>
               </li>
 
               <!-- Toogle theme mode -->
@@ -128,13 +124,13 @@
 
   <picture>
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/personal-website-2/assets/img/prof_pic-480.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/personal-website-2/assets/img/prof_pic-800.webp"></source>
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/personal-website-2/assets/img/prof_pic-1400.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/prof_pic-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/prof_pic-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/prof_pic-1400.webp"></source>
     
 
     <!-- Fallback to the original file -->
-    <img src="/personal-website-2/assets/img/prof_pic.jpg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/prof_pic.jpg" class="img-fluid z-depth-1 rounded-circle" width="auto" height="auto" alt="prof_pic.jpg" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -143,14 +139,14 @@
           </div>
 
           <div class="clearfix">
-            <p>I’m a PhD Student in Statistical Science at UCL supervised by <a href="https://jeremiasknoblauch.github.io/" rel="external nofollow noopener" target="_blank">Jeremias Knoblauch</a> and <a href="https://fxbriol.github.io/" rel="external nofollow noopener" target="_blank">François-Xavier Briol</a>. My research focuses on robust Bayesian inference and Gaussian Processes.</p>
+            <p>I’m a PhD Student in Statistical Science at UCL supervised by <a href="https://jeremiasknoblauch.github.io/" rel="external nofollow noopener" target="_blank">Jeremias Knoblauch</a> and <a href="https://fxbriol.github.io/" rel="external nofollow noopener" target="_blank">François-Xavier Briol</a>. My research focuses on robust Bayesian methods in time series models.</p>
 
 <p>Prior to starting my PhD, I worked as a research engineer at Center of Mathematical Modeling - Universidad de Chile, using data science and stochastic modeling to different projects.</p>
 
           </div>
 
           <!-- News -->
-          <h2><a href="/personal-website-2/news/" style="color: inherit;">news</a></h2>          <div class="news">
+          <h2><a href="/news/" style="color: inherit;">news</a></h2>          <div class="news">
             <div class="table-responsive">
               <table class="table table-sm table-borderless">
               
@@ -169,13 +165,13 @@
           
 
           <!-- Selected papers -->
-          <h2><a href="/personal-website-2/publications/" style="color: inherit;">selected publications</a></h2>
+          <h2><a href="/publications/" style="color: inherit;">selected publications</a></h2>
           <div class="publications">
             <ol class="bibliography">
 <li>
 <!-- _layouts/bib.html -->
       <div class="row">
-        <div class="col-sm-2 abbr"><abbr class="badge">ICML</abbr></div>
+        <div class="col-sm-2 abbr"><abbr class="badge"><a href="https://icml.cc/" rel="external nofollow noopener" target="_blank">ICML</a></abbr></div>
 
         <!-- Entry bib key -->
         <div id="altamirano2023robust" class="col-sm-8">
@@ -185,7 +181,7 @@
         <div class="author">
         
 
-        Matias Altamirano, François-Xavier Briol, and Jeremias Knoblauch</div>
+        <em>Matias Altamirano</em>, François-Xavier Briol, and Jeremias Knoblauch</div>
 
         <!-- Journal/Book title and date -->
         
@@ -224,7 +220,7 @@
 <li>
 <!-- _layouts/bib.html -->
       <div class="row">
-        <div class="col-sm-2 abbr"><abbr class="badge">AISTATS</abbr></div>
+        <div class="col-sm-2 abbr"><abbr class="badge"><a href="https://aistats.org/" rel="external nofollow noopener" target="_blank">AISTATS</a></abbr></div>
 
         <!-- Entry bib key -->
         <div id="altamirano2022nonstationary" class="col-sm-8">
@@ -234,7 +230,7 @@
         <div class="author">
         
 
-        Matias Altamirano, and Felipe Tobar</div>
+        <em>Matias Altamirano</em>, and Felipe Tobar</div>
 
         <!-- Journal/Book title and date -->
         
@@ -299,7 +295,7 @@
     <!-- Footer -->    <footer class="sticky-bottom mt-5">
       <div class="container">
         © Copyright 2023 Matías  Altamirano. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
-Last updated: May 12, 2023.
+Last updated: May 15, 2023.
       </div>
     </footer>
 
@@ -314,19 +310,19 @@ Last updated: May 12, 2023.
     <!-- Masonry & imagesLoaded -->
   <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script defer src="/personal-website-2/assets/js/masonry.js" type="text/javascript"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
     
   <!-- Medium Zoom JS -->
   <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/personal-website-2/assets/js/zoom.js"></script>
+  <script defer src="/assets/js/zoom.js"></script>
 
   <!-- Bootstrap Table -->
   <script defer src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script>
 
   <!-- Load Common JS -->
-  <script src="/personal-website-2/assets/js/no_defer.js"></script>
-  <script defer src="/personal-website-2/assets/js/common.js"></script>
-  <script defer src="/personal-website-2/assets/js/copy_code.js" type="text/javascript"></script>
+  <script src="/assets/js/no_defer.js"></script>
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
 
     
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
@@ -343,7 +339,14 @@ Last updated: May 12, 2023.
   <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
   <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ window.dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '');
+  </script>
     
 
 <!-- Scrolling Progress Bar -->

@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://maltamiranomontero.github.io/personal-website-2/sitemap.xml
+Sitemap: https://maltamiranomontero.github.io/sitemap.xml
