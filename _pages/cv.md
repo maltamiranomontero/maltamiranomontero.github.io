@@ -1,8 +1,8 @@
 ---
 layout: cv
 permalink: /cv/
-title: CV
+title: cv
 nav: true
-nav_order: 2
-redirect_to: /assets/pdf/CV.pdf
+nav_order: 3
+cv_pdf: CV.pdf
 ---
