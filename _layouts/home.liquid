@@ -100,8 +100,11 @@
   {%- endif %}
 
   <section id="publications">
-    <div class="section-label">Publications</div>
-    {% bibliography %}
+    <div class="section-label">Selected Publications</div>
+    {% bibliography -q @*[selected=true] %}
+    {%- if site.data.socials.scholar_userid %}
+    <p class="pub-more"><a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" target="_blank" rel="noopener">Full list on Google Scholar &rarr;</a></p>
+    {%- endif %}
   </section>
 
   <section id="contact">

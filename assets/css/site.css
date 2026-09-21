@@ -334,6 +334,13 @@ ol.bibliography li:last-child .pub-item { border-bottom: none; }
 }
 .pub-link:hover { background: var(--tag-hover); text-decoration: none; }
 
+.pub-more {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
 /* ── Contact ── */
 .contact-list { list-style: none; }
 
