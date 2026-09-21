@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- assign full_name = site.first_name | append: ' ' | append: site.last_name -%}
+  <title>{{ full_name }}</title>
+  {%- if page.description %}
+  <meta name="description" content="{{ page.description | escape }}">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  {%- endif %}
+  <meta property="og:title" content="{{ full_name }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}/">
+  <script>
+    // Apply the saved (or system) theme before first paint to avoid a flash.
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/img/' | append: site.icon | relative_url }}">
+</head>
+<body>
+<div class="page-wrap">
+
+  <nav class="site-nav">
+    <a class="nav-name" href="{{ '/' | relative_url }}">{{ full_name }}</a>
+    <ul class="nav-links">
+      {%- if page.interests %}<li><a href="#research">Research</a></li>{% endif %}
+      {%- if page.announcements.enabled %}<li><a href="#news">News</a></li>{% endif %}
+      <li><a href="#publications">Papers</a></li>
+      <li><a href="#contact">Contact</a></li>
+      {%- if site.data.socials.cv_pdf %}<li><a href="{{ site.data.socials.cv_pdf | relative_url }}">CV</a></li>{% endif %}
+      <li>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light and dark mode" title="Toggle light / dark mode">
+          <svg class="to-light" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="to-dark" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+      <h1>{{ full_name }}</h1>
+      {%- if page.subtitle %}<p class="hero-role">{{ page.subtitle }}</p>{% endif %}
+      <div class="hero-bio">
+        {{ content }}
+      </div>
+      <div class="hero-links">
+        {%- if site.data.socials.scholar_userid %}
+        <a class="hero-link" href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" target="_blank" rel="noopener">Google Scholar</a>
+        {%- endif %}
+        {%- if site.data.socials.cv_pdf %}
+        <a class="hero-link" href="{{ site.data.socials.cv_pdf | relative_url }}">CV</a>
+        {%- endif %}
+        {%- if site.data.socials.email %}
+        <a class="hero-link" href="mailto:{{ site.data.socials.email }}">Email</a>
+        {%- endif %}
+      </div>
+    </div>
+    {%- if page.profile.image %}
+    <img class="hero-photo" src="{{ page.profile.image | prepend: '/assets/img/' | relative_url }}" alt="{{ full_name }}">
+    {%- endif %}
+  </header>
+
+  {%- if page.interests %}
+  <section id="research">
+    <div class="section-label">Research</div>
+    <div class="interests-grid">
+      {%- for interest in page.interests %}
+      <div class="interest-item">{{ interest }}</div>
+      {%- endfor %}
+    </div>
+  </section>
+  {%- endif %}
+
+  {%- if page.announcements.enabled %}
+  {%- assign news_items = site.news | sort: 'date' | reverse %}
+  {%- if news_items.size > 0 %}
+  <section id="news">
+    <div class="section-label">News</div>
+    {%- for item in news_items limit: page.announcements.limit %}
+    <div class="news-item">
+      <div class="news-date">{{ item.date | date: '%b %Y' }}</div>
+      <div class="news-body">{{ item.content | markdownify }}</div>
+    </div>
+    {%- endfor %}
+  </section>
+  {%- endif %}
+  {%- endif %}
+
+  <section id="publications">
+    <div class="section-label">Selected Publications</div>
+    {% bibliography -q @*[selected=true] %}
+    {%- if site.data.socials.scholar_userid %}
+    <p class="pub-more"><a href="https://scholar.google.com/citations?user={{ site.data.socials.scholar_userid }}" target="_blank" rel="noopener">Full list on Google Scholar &rarr;</a></p>
+    {%- endif %}
+  </section>
+
+  <section id="contact">
+    <div class="section-label">Contact</div>
+    <ul class="contact-list">
+      {%- if site.data.socials.email %}
+      <li><span class="contact-key">Email</span><a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a></li>
+      {%- endif %}
+      {%- if site.data.socials.linkedin_username %}
+      <li><span class="contact-key">LinkedIn</span><a href="https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}" target="_blank" rel="noopener">{{ site.data.socials.linkedin_username }}</a></li>
+      {%- endif %}
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    {%- if site.last_updated %}Last updated {{ site.time | date: '%B %Y' }}. {% endif %}
+    Built with <a href="https://github.com/alshedivat/al-folio">al-folio</a>.
+  </footer>
+
+</div>
+<script>
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    var root = document.documentElement;
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+</script>
+</body>
+</html>

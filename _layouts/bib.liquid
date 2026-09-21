@@ -1,0 +1,56 @@
+---
+---
+<div class="pub-item" id="{{ entry.key }}">
+  <div class="pub-title">{{ entry.title }}</div>
+
+  <div class="pub-authors">
+    {%- for author in entry.author_array -%}
+      {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
+      {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+      {%- assign author_is_self = false -%}
+      {%- if site.scholar.last_name contains author_last_name and site.scholar.first_name contains author.first -%}
+        {%- assign author_is_self = true -%}
+      {%- endif -%}
+      {%- assign coauthor_url = null -%}
+      {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
+      {%- if site.data.coauthors[clean_last_name] -%}
+        {%- for coauthor in site.data.coauthors[clean_last_name] -%}
+          {%- if coauthor.firstname contains author.first -%}
+            {%- assign coauthor_url = coauthor.url -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- unless forloop.first %}, {% endunless -%}
+      {%- if author_is_self -%}
+        <strong>{{ author.first }} {{ author_last_html }}</strong>
+      {%- elsif coauthor_url -%}
+        <a href="{{ coauthor_url }}">{{ author.first }} {{ author_last_html }}</a>
+      {%- else -%}
+        {{ author.first }} {{ author_last_html }}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="pub-venue">
+    {%- assign venue = entry.journal | default: entry.booktitle -%}
+    {%- if venue %}<em>{{ venue }}</em>{% endif -%}
+    {%- if entry.abbr and entry.booktitle %} ({{ entry.abbr }}){% endif -%}
+    {%- if entry.year %}{% if venue %}, {% endif %}{{ entry.year }}{% endif -%}
+  </div>
+
+  <div class="pub-links">
+    {%- if entry.arxiv %}<a class="pub-link" href="https://arxiv.org/abs/{{ entry.arxiv }}" target="_blank" rel="noopener">arXiv</a>{% endif -%}
+    {%- if entry.pdf %}
+      {%- if entry.pdf contains '://' %}
+        <a class="pub-link" href="{{ entry.pdf }}" target="_blank" rel="noopener">PDF</a>
+      {%- else %}
+        <a class="pub-link" href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">PDF</a>
+      {%- endif %}
+    {%- endif -%}
+    {%- if entry.code %}<a class="pub-link" href="{{ entry.code }}" target="_blank" rel="noopener">Code</a>{% endif -%}
+    {%- if entry.html %}<a class="pub-link" href="{{ entry.html }}" target="_blank" rel="noopener">Website</a>{% endif -%}
+    {%- if entry.slides %}<a class="pub-link" href="{{ entry.slides }}" target="_blank" rel="noopener">Slides</a>{% endif -%}
+    {%- if entry.poster %}<a class="pub-link" href="{{ entry.poster }}" target="_blank" rel="noopener">Poster</a>{% endif -%}
+  </div>
+</div>
