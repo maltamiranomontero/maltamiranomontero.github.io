@@ -1,0 +1,398 @@
+/* One-page academic layout: narrow column, mono labels, thin rules. */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #0d0d0d;
+  --body:     #2a2a2a;
+  --muted:    #717171;
+  --soft:     #a0a0a0;
+  --rule:     #e4e4e4;
+  --bg:       #ffffff;
+  --bg-alt:   #f6f8fc;
+  --accent:   #00369f;
+  --tag-bg:   #eef2fb;
+  --tag-hover:#dfe7f8;
+
+  --sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+:root { color-scheme: light; }
+
+/* Dark palette. The script in <head> sets data-theme on <html> from the saved
+   choice or the system setting; the media query is the fallback without JS. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink:      #f2f2f2;
+  --body:     #d4d4d4;
+  --muted:    #9a9a9a;
+  --soft:     #6f6f6f;
+  --rule:     #2c2c2c;
+  --bg:       #111111;
+  --bg-alt:   #181b22;
+  --accent:   #8fb0ff;
+  --tag-bg:   #1a2233;
+  --tag-hover:#243049;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --ink:      #f2f2f2;
+    --body:     #d4d4d4;
+    --muted:    #9a9a9a;
+    --soft:     #6f6f6f;
+    --rule:     #2c2c2c;
+    --bg:       #111111;
+    --bg-alt:   #181b22;
+    --accent:   #8fb0ff;
+    --tag-bg:   #1a2233;
+    --tag-hover:#243049;
+  }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.page-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Nav ── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.3rem 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-name {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.nav-name:hover { text-decoration: none; }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem 2rem;
+}
+
+.nav-links li { display: flex; align-items: center; }
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+/* Theme toggle: hidden until the head script has set data-theme (needs JS). */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:root[data-theme] .theme-toggle { display: inline-flex; }
+
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Show the icon of the mode you would switch to: moon in light, sun in dark. */
+:root[data-theme="dark"]  .theme-toggle .to-dark,
+:root[data-theme="light"] .theme-toggle .to-light { display: none; }
+
+/* ── Hero ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 155px;
+  gap: 3.5rem;
+  align-items: start;
+  padding: 4.5rem 0 3.5rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.hero-role {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+
+.hero-bio p {
+  font-size: 0.97rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--body);
+  margin-bottom: 0.9rem;
+}
+.hero-bio p:last-child { margin-bottom: 0; }
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.8rem;
+}
+
+.hero-link {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 0.35rem 0.75rem;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+.hero-link:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.hero-photo {
+  width: 155px;
+  height: 195px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ── Sections ── */
+section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── Research interests ── */
+.interests-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.interest-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-alt);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.interest-item::before {
+  content: '';
+  flex-shrink: 0;
+  width: 3px;
+  height: 1.1rem;
+  background: var(--accent);
+}
+
+/* ── News ── */
+.news-item {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.93rem;
+}
+.news-item:last-child { border-bottom: none; }
+
+.news-date {
+  padding-top: 0.18rem;
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  color: var(--soft);
+}
+
+.news-body p { margin: 0; }
+
+/* ── Publications (jekyll-scholar output) ── */
+h2.bibliography {
+  margin: 2rem 0 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+h2.bibliography:first-of-type { margin-top: 0; }
+
+ol.bibliography { list-style: none; }
+
+.pub-item {
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+ol.bibliography li:last-child .pub-item { border-bottom: none; }
+
+.pub-title {
+  margin-bottom: 0.2rem;
+  font-size: 0.97rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pub-authors,
+.pub-venue {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--muted);
+}
+.pub-authors { margin-bottom: 0.2rem; }
+.pub-venue   { margin-bottom: 0.5rem; }
+.pub-authors strong { font-weight: 500; color: var(--ink); }
+.pub-authors a { color: inherit; }
+.pub-authors a:hover { color: var(--accent); }
+
+.pub-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.pub-link {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--tag-bg);
+  padding: 0.18rem 0.55rem;
+  transition: background 0.15s;
+}
+.pub-link:hover { background: var(--tag-hover); text-decoration: none; }
+
+.pub-more {
+  margin-top: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── Contact ── */
+.contact-list { list-style: none; }
+
+.contact-list li {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.93rem;
+}
+.contact-list li:last-child { border-bottom: none; }
+
+.contact-key {
+  padding-top: 0.15rem;
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--soft);
+}
+
+/* ── Footer ── */
+.site-footer {
+  padding: 2rem 0 3rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  color: var(--soft);
+}
+.site-footer a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Small screens ── */
+@media (max-width: 640px) {
+  .page-wrap { padding: 0 1.25rem; }
+  .site-nav { flex-direction: column; align-items: flex-start; gap: 0.6rem; position: static; }
+  .nav-links { justify-content: flex-start; gap: 0.4rem 1.25rem; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2.5rem 0 2.5rem;
+  }
+  .hero-photo { order: -1; width: 110px; height: 138px; }
+  .hero h1 { font-size: 2.1rem; }
+
+  .interests-grid { grid-template-columns: 1fr; }
+  .news-item,
+  .contact-list li { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
