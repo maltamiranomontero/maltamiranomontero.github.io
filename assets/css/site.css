@@ -240,28 +240,6 @@ section {
 }
 
 /* ── Research interests ── */
-.interests-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem;
-}
-
-.interest-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.75rem 1rem;
-  background: var(--bg-alt);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-.interest-item::before {
-  content: '';
-  flex-shrink: 0;
-  width: 3px;
-  height: 1.1rem;
-  background: var(--accent);
-}
 
 /* ── News ── */
 .news-item {
@@ -386,8 +364,6 @@ ol.bibliography li:last-child .pub-item { border-bottom: none; }
   }
   .hero-photo { order: -1; width: 110px; height: 138px; }
   .hero h1 { font-size: 2.1rem; }
-
-  .interests-grid { grid-template-columns: 1fr; }
   .news-item,
   .contact-list li { grid-template-columns: 1fr; gap: 0.15rem; }
 }
