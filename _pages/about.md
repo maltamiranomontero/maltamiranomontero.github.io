@@ -25,8 +25,7 @@ latest_posts:
   enabled: false # includes a list of the newest posts
 ---
 
-I’m a PhD Student in Statistical Science at UCL and part of the [Fundamentals of Statistical Machine Learning](https://fsml-ucl.github.io/) research group supervised by [Jeremias Knoblauch](https://jeremiasknoblauch.github.io/) and [François-Xavier Briol](https://fxbriol.github.io/). My research focuses on robust Bayesian methods in time series models. 
+I'm a Florence Nightingale Bicentenary Fellow in Statistics at the [University of Oxford](https://www.stats.ox.ac.uk). 
+Prior to this, I was a PhD Student in Statistical Science at UCL and part of the [Fundamentals of Statistical Machine Learning](https://fsml-ucl.github.io/) research group supervised by [Jeremias Knoblauch](https://jeremiasknoblauch.github.io/) and [François-Xavier Briol](https://fxbriol.github.io/). During my PhD, I was supported by the [Bloomberg Data Science PhD fellowship](https://www.bloomberg.com/company/stories/introducing-the-seventh-cohort-of-bloomberg-data-science-ph-d-fellows-2024-2025/).
 
-My PhD is supported by the [Bloomberg Data Science PhD fellowship](https://www.bloomberg.com/company/values/tech-at-bloomberg/data-science/academic-engagement-programs/data-science-ph-d-fellowship/)
-
-Prior to starting my PhD, I worked as a research engineer at Center of Mathematical Modeling - Universidad de Chile, using data science and stochastic modeling to different projects.
+My research focuses on developing robust and reliable statistical methods and understanding their properties. I'm particularly interested in probabilistic inference and uncertainty quantification, with a focus on Bayesian methods under model misspecification.
