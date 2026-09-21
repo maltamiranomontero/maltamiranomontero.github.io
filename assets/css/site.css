@@ -18,8 +18,27 @@
   --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 }
 
+:root { color-scheme: light; }
+
+/* Dark palette. The script in <head> sets data-theme on <html> from the saved
+   choice or the system setting; the media query is the fallback without JS. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink:      #f2f2f2;
+  --body:     #d4d4d4;
+  --muted:    #9a9a9a;
+  --soft:     #6f6f6f;
+  --rule:     #2c2c2c;
+  --bg:       #111111;
+  --bg-alt:   #181b22;
+  --accent:   #8fb0ff;
+  --tag-bg:   #1a2233;
+  --tag-hover:#243049;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
+    color-scheme: dark;
     --ink:      #f2f2f2;
     --body:     #d4d4d4;
     --muted:    #9a9a9a;
@@ -92,6 +111,29 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   transition: color 0.15s;
 }
 .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+/* Theme toggle: hidden until the head script has set data-theme (needs JS). */
+.theme-toggle {
+  display: none;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.theme-toggle:hover { color: var(--ink); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:root[data-theme] .theme-toggle { display: inline-flex; }
+
+/* Show the name of the mode you would switch to. */
+:root[data-theme="dark"]  .theme-toggle .to-dark,
+:root[data-theme="light"] .theme-toggle .to-light { display: none; }
 
 /* ── Hero ── */
 .hero {

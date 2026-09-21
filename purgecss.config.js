@@ -4,6 +4,8 @@ module.exports = {
   output: "_site/assets/css/",
   skippedContentGlobs: ["_site/assets/**/*.html"],
   safelist: [
+    // site.css themes via the data-theme attribute that the head script sets at runtime.
+    /data-theme/,
     "collapse",
     "collapsing",
     "show",
