@@ -8,19 +8,15 @@ description: Matías Altamirano is a Florence Nightingale Bicentenary Fellow in 
 profile:
   image: prof_pic.jpg
 
-interests:
-  - Robust Bayesian inference
-  - Model misspecification
-  - Generalised Bayes
-  - Uncertainty quantification
-  - Time series models
-  - Gaussian processes
-  - Changepoint detection
-  - Probabilistic inference
+# interests:
+#   - Robust Bayesian inference
+#   - Generalised Bayes
+#   - Uncertainty quantification
+#   - Time series models
 
 announcements:
   enabled: true
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  limit: 1 # leave blank to include all the news in the `_news` folder
 ---
 
 I'm a Florence Nightingale Bicentenary Fellow in Statistics at the [University of Oxford](https://www.stats.ox.ac.uk).
