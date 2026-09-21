@@ -99,8 +99,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
   gap: 0.4rem 2rem;
 }
+
+.nav-links li { display: flex; align-items: center; }
 
 .nav-links a {
   font-family: var(--mono);
@@ -131,7 +134,17 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 :root[data-theme] .theme-toggle { display: inline-flex; }
 
-/* Show the name of the mode you would switch to. */
+.theme-toggle svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Show the icon of the mode you would switch to: moon in light, sun in dark. */
 :root[data-theme="dark"]  .theme-toggle .to-dark,
 :root[data-theme="light"] .theme-toggle .to-light { display: none; }
 
